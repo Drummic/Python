@@ -1,0 +1,98 @@
+1. Setting Up Your Project
+First, make sure you have Python and Flask installed. Then, 
+create a new directory for your project, and within that directory, 
+create the following file structure:
+
+/your_project
+    /templates
+        index.html
+        miki.html
+    /static
+        style.css
+    /app
+        __init__.py
+        routes.py
+    app.py
+
+2. HTML Files
+Inside the /templates folder, create two HTML files: 
+- index.html
+- miki.html
+
+3. CSS File
+Inside the /static folder, create a CSS file:
+- style.css
+
+4. Flask Files
+Inside the /app folder, create two Python files:
+- __init__.p
+- routes.py
+
+5. Run the App
+In the root directory (/your_project), create the following app.py file:
+
+- app.py
+
+6. Start the Server
+Run the following command in your terminal from the root directory:
+
+python app.py
+
+Now, navigate to http://127.0.0.1:5000/ in your web 
+browser, and you should see the "Hello World!" page with a button linking to the "Hi Miki" page.
+
+
+### 1. File Structure
+
+- `/templates`: This directory contains HTML templates that Flask will render. Flask's `render_template` 
+   function looks in this folder for HTML files.
+- `/static`: This directory holds static files like CSS and images. Flask serves these files unmodified to the client.
+- `/app`: This directory contains the Flask application's main Python files, including the `__init__.py` and `routes.py`.
+
+### 2. HTML Files (`index.html` & `miki.html`)
+
+- These files define the structure and content of your web pages. They include a link to the CSS file and define the 
+  button to navigate between the pages.
+- Flask's template engine (Jinja2) allows you to use `{{ url_for() }}` to dynamically generate URLs, which helps in 
+  linking static files and defining routes.
+
+### 3. CSS File (`style.css`)
+
+- This file contains the styling for your HTML templates. The link to this file is provided in the HTML's `<head>` 
+  section, telling the browser where to find the styles.
+
+### 4. Flask Files
+
+#### `__init__.py`
+
+- This file initializes the Flask application object (`app`).
+- It also imports the routes from the `routes.py` file, connecting the routes to the application.
+
+#### `routes.py`
+
+- This file defines the routes or URLs that your application will implement.
+- The `@app.route('/')` and `@app.route('/miki')` decorators tell Flask which URLs should trigger the associated 
+  functions.
+- The `render_template` function is used to render the HTML templates, sending them to the client's browser.
+
+#### `app.py`
+
+- This file is the entry point for running your Flask application.
+- The `app = Flask(__name__, template_folder='../templates')` block ensures that the app is only run if this 
+  script is executed directly (not imported as a module) and the ../templates relative path indicates where 
+  the html file are which will be rendered.  
+
+### 5. Interaction Between Parts
+
+1. When you run `python app.py`, Flask starts a server that listens for HTTP requests.
+2. When a user navigates to `http://127.0.0.1:5000/`, Flask uses the route defined in `routes.py` to find 
+   the appropriate view function (`index` or `miki`).
+3. The view function calls `render_template` to render the corresponding HTML file.
+4. The HTML file references the CSS file from the `/static` directory, which Flask serves to the client.
+5. The client's browser combines the HTML and CSS to render the page visually.
+6. If the user clicks the button, the browser sends a request to the URL defined in the `href` attribute, 
+   and the process repeats for the next route.
+
+This project showcases a minimal but complete web application with the separation of concerns and interaction 
+between different components.
+

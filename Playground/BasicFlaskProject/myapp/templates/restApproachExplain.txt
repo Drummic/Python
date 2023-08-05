@@ -1,0 +1,46 @@
+Certainly! The REST (Representational State Transfer) architecture is a set of principles that define how resources are defined and addressed. Resources are anything that can be named, like a user, product, or, in this case, a webpage. They are manipulated using standard HTTP methods, like GET, POST, PUT, and DELETE.
+
+In the example of the Flask application with the "Back Home" button, we can see some elements of REST:
+---------------------------------------------------------------------------------------------------------------------
+### 1. Resources
+---------------------------------------------------------------------------------------------------------------------
+Here, the resources are the pages you are serving, namely `index.html` and `miki.html`.
+
+---------------------------------------------------------------------------------------------------------------------
+### 2. Stateless
+---------------------------------------------------------------------------------------------------------------------
+In REST, each request from a client contains all the information needed to process the request. 
+The server doesn't store any information about the client's previous requests. In your Flask app, when a user 
+clicks the "Back Home" button, their browser sends a new HTTP GET request to the server, and the server responds 
+with the `index.html` resource. The server doesn't need to know anything about what the user was doing before they 
+clicked the button.
+
+---------------------------------------------------------------------------------------------------------------------
+### 3. Client-Server Architecture
+---------------------------------------------------------------------------------------------------------------------
+Your Flask app follows the client-server model, with the Flask app acting as the server and the user's browser as
+the client. The client and server are independent and communicate over HTTP.
+
+---------------------------------------------------------------------------------------------------------------------
+### 4. HTTP Methods
+---------------------------------------------------------------------------------------------------------------------
+In this simple example, we are mainly using the HTTP GET method. When the user navigates to a page or clicks the 
+"Back Home" button, their browser sends an HTTP GET request to the server. The server responds with the requested 
+resource (HTML page).
+
+---------------------------------------------------------------------------------------------------------------------
+### 5. State Representation
+---------------------------------------------------------------------------------------------------------------------
+The server responds to a client's request with a representation of the resource's state, such as the HTML and CSS 
+needed to render the page.
+
+### 6. URLs as Resource Identifiers
+
+In REST, URLs identify resources. In your Flask app, the URL pattern defined in the `@app.route('/')` decorator 
+identifies the `index.html` resource, and the URL pattern in the `@app.route('/miki')` decorator identifies the 
+`miki.html` resource.
+
+While this example doesn't fully encapsulate all the principles of REST (such as handling different HTTP 
+methods like POST, PUT, and DELETE), it does illustrate some fundamental concepts of RESTful architecture. 
+In more complex applications, you might have routes to create, update, and delete resources, all following 
+RESTful principles.
